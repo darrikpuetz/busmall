@@ -28,7 +28,7 @@ function Products(file, item, counter, votes) {
 
     new Products('img/bag.jpg', 'Bag');
     new Products('img/banana.jpg', 'Banana');
-    new Products('Bathroom','img/bathroom.jpg');
+    new Products('img/bathroom.jpg', 'Bathroom');
     new Products('img/boots.jpg', 'Boots',);
     new Products('img/breakfast.jpg', 'Breakfast');
     new Products('img/bubblegum.jpg', 'Bubblegum');
@@ -53,7 +53,7 @@ function Products(file, item, counter, votes) {
 
 function imageCreator() {
 
-    var randomNumber1 = Math.floor(Math.random() *Products.productsArray.length);
+    var randomNumber1 = Math.floor(Math.random() * Products.productsArray.length);
     var randomNumber2 = Math.floor(Math.random() * Products.productsArray.length);
     var randomNumber3 = Math.floor(Math.random() * Products.productsArray.length);
     while(randomNumber1 === randomNumber2){
@@ -80,23 +80,28 @@ function imageCreator() {
     itemThree.index = randomNumber3;
 };
 
-
-
-
-function newPictures() {
-    if (counter <=25) {
-        imageCreator()
-        counter = counter++
-        console.log(counter);
-        }
-    else if(counter < 27){
-        printResult();
+function scoreboard() {
+    for(var i = 0; i <= Products.productsArray.length-1; i++) {
+        var scoreList = document.getElementById('scoreList');
+        var list = document.createElement('li');
+        list.textContent = Products.productsArray[i].item + '   ' + Products.productsArray.votes;
+        scoreList.appendChild(list)
     }
 }
 
-function scoreboard() {
 
+function newPictures() {
+    Products.productsArray[event.target.index].votes +=1
+    if (counter <=25) {
+        imageCreator()
+        counter = ++counter
+        console.log(counter);
+        }
+    else if(counter < 27){
+        scoreboard();
+    }
 }
+
 itemOne.addEventListener('click' , newPictures)
 itemTwo.addEventListener('click' , newPictures)
 itemThree.addEventListener('click' , newPictures)
