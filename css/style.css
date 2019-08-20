@@ -1,0 +1,51 @@
+* {
+    outline: dotted 2.5px rgba(0, 255, 0, 0.658);
+   }
+   /* `Clear Floated Elements
+   ----------------------------------------------------------------------------------------------------*/
+   /* http://sonspring.com/journal/clearing-floats */
+   .clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+   }
+ 
+   body {
+       background: crimson;
+   }
+
+   figure img {
+       cursor: pointer;
+       display: block;
+       margin: auto;
+       min-width: 100%;
+       height: 200px;
+       width: 200px;
+   }
+
+   figcaption {
+       background: #ccc;
+       font-weight: bold;
+       line-height: 2em;
+       text-align: center;
+   }
+
+   figure {
+       border: 1px solid grey;
+       min-width: 200px;
+       height: 200px;
+       width: 200px;
+   }
+   
+   h1 {
+       font-size: 2.5em;
+       font-weight: bold;
+   }
+
+   Footer {
+       position: absolute;
+       bottom: 0;
+   }
