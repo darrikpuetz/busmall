@@ -1,6 +1,6 @@
-* {
+/* * {
     outline: dotted 2.5px rgba(0, 255, 0, 0.658);
-   }
+   } */
    /* `Clear Floated Elements
    ----------------------------------------------------------------------------------------------------*/
    /* http://sonspring.com/journal/clearing-floats */
@@ -45,7 +45,47 @@
        font-weight: bold;
    }
 
-   Footer {
-       position: absolute;
+   footer {
+       position: fixed;
        bottom: 0;
+       background: #075B7B;
+       height: 50px;
+       display: block;
+       width: 100%;
    }
+
+   #image-1 {
+       height: 300px;
+       width: 300px;
+       float: left;
+       border-radius: 10%;
+       margin: 20px 20px 20px 20px;
+
+   }
+   #image-2 {
+    height: 300px;
+    width: 300px;
+    float: left;
+    border-radius: 10%;
+    margin: 20px 20px 20px 20px;
+    display: inline;
+}
+#image-3 {
+    height: 300px;
+    width: 300px;
+    float: left;
+    border-radius: 10%;
+    margin: 20px 20px 20px 20px;
+    display: inline;
+
+}
+
+#votingSection {
+    height: 200px;
+    width: 200px;
+    margin: 30px 50px 30px 30px;
+    margin: 20px auto;
+    display: inline;
+
+
+}
