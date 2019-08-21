@@ -99,9 +99,11 @@ function showRandomImages(numImages) {
 function renderchart() {
     var items = [];
     var clicked = [];
+    var views = [];
     for (i = 0; i < Products.productsArray.length; i++) {
         items.push(Products.productsArray[i].item);
         clicked.push(Products.productsArray[i].clicks);
+        views.push(Products.productsArray[i].views);
         console.log(clicked);
     }
     
@@ -113,10 +115,15 @@ function renderchart() {
                 labels: items,
                 datasets: [
                     {label: 'votes',
-                    backgroundColor: 'ff8000',
+                    backgroundColor: 'orange',
                     strokeColor: '#ff8000',
-                    data: clicked,
-                }],
+                    data: clicked,},
+
+                    {label: 'views',
+                    backgroundColor: 'green',
+                    strokeColor: '#ff8000',
+                    data: views,}
+                ],
             }
 
         });
@@ -131,6 +138,7 @@ function showRandomImages(numImages) {
         var id = `image-${i}`;
         var img = document.getElementById(id);
         var imageObject = getRandomImage();
+        imageObject.updateViews();
 
         img.src = imageObject.src;
         img.alt = imageObject.item;
