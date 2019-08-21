@@ -9,7 +9,6 @@ Products.productsArray = [];
 var alreadyUsed = [];
 var picked = 0;
 var counter = 0;
-var votes = 0;
 
 
 function randomProducts() {
@@ -66,9 +65,8 @@ function clickHandler(e) {
     var imageName = e.target.alt;
     counter++
     for (var i = 0; i < Products.productsArray.length; i++) {
-        if (Products.productsArray[i].name === imageName) {
+        if (Products.productsArray[i].item === imageName) {
             Products.productsArray[i].updateClicks();
-            votes++
         }
     }
     if(counter < 25) {
@@ -104,22 +102,22 @@ function renderchart() {
     for (i = 0; i < Products.productsArray.length; i++) {
         items.push(Products.productsArray[i].item);
         clicked.push(Products.productsArray[i].clicks);
+        console.log(clicked);
     }
     
-    var data = {
-        labels: items,
-        datasets: [
-            {label: 'votes',
-            backgroundColor: 'ff8000',
-            strokeColor: '#ff8000',
-            data: votes,
-        }],
-    }
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
         
         type: 'bar',
-        data: data,
+             data : {
+                labels: items,
+                datasets: [
+                    {label: 'votes',
+                    backgroundColor: 'ff8000',
+                    strokeColor: '#ff8000',
+                    data: clicked,
+                }],
+            }
 
         });
     }
@@ -135,7 +133,7 @@ function showRandomImages(numImages) {
         var imageObject = getRandomImage();
 
         img.src = imageObject.src;
-        img.alt = imageObject.name;
+        img.alt = imageObject.item;
     }
 
     justUsed = thisSet;
