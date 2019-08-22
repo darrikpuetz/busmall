@@ -37,6 +37,8 @@ Products.prototype.updateClicks = function() {
     this.clicks++;
 }
 
+// var localStorageData = localStorage.getItem('item');
+
 function loadProducts() {
     new Products('img/bag.jpg', 'Bag');
     new Products('img/banana.jpg', 'Banana');
@@ -61,6 +63,7 @@ function loadProducts() {
     console.log(Products.productsArray)
 }
 
+
 function clickHandler(e) {
     var imageName = e.target.alt;
     counter++
@@ -70,10 +73,12 @@ function clickHandler(e) {
         }
     }
     if(counter < 25) {
-    showRandomImages(3);
+        showRandomImages(3);
     }
     else if(counter ===25) {
         renderchart()
+        localStorage.setItem('clicked', JSON.stringify(clicked))
+        localStorage.setItem('views', JSON.stringify(views))
     }
 }
 function setupImageContainers(numImages) {
@@ -95,11 +100,11 @@ function showRandomImages(numImages) {
     
 }
 
+var clicked = [];
+var views = [];
 
 function renderchart() {
     var items = [];
-    var clicked = [];
-    var views = [];
     for (i = 0; i < Products.productsArray.length; i++) {
         items.push(Products.productsArray[i].item);
         clicked.push(Products.productsArray[i].clicks);
@@ -149,9 +154,10 @@ function showRandomImages(numImages) {
 
 }
 
+
 function getRandomImage() {
     var found = false;
-
+    
     while (!found) {
         var n = Math.floor(Math.random() * Products.productsArray.length);
         if (!thisSet[n] && !justUsed[n]) {
@@ -164,6 +170,19 @@ function getRandomImage() {
 }
 
 loadProducts();
+
+function loadData() {
+    var savedClicked = JSON.parse(localStorage.getItem('clicked'));
+    var savedViews = JSON.parse(localStorage.getItem('views'));
+    if ( savedClicked) {
+        for (i = 0; i < savedClicked.length; i++) {
+            Products.productsArray[i].clicks = savedClicked[i];
+            Products.productsArray[i].views = savedViews[i];
+        }
+
+    }
+}
+loadData()
 setupImageContainers(3);
 setupListener();
 showRandomImages(3);
