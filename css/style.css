@@ -1,6 +1,6 @@
-/* * {
-    outline: dotted 2.5px rgba(0, 255, 0, 0.658);
-   } */
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+   }
    /* `Clear Floated Elements
    ----------------------------------------------------------------------------------------------------*/
    /* http://sonspring.com/journal/clearing-floats */
@@ -14,7 +14,7 @@
    }
  
    body {
-       background: crimson;
+       background: #f3e5ab;
    }
 
    figure img {
